@@ -1,0 +1,32 @@
+{
+  "summary": "early group · warming up · low-risk recommended",
+  "state": "warming",
+  "group_stage": "early",
+  "participation_level": "medium",
+  "energy_level": "steady",
+  "familiarity_level": "low",
+  "fatigue_level": "low",
+  "recommended_risk_level": "low",
+  "recent_topics": [
+    "greetings",
+    "nickname introductions"
+  ],
+  "signals": {
+    "recent_message_count": 8,
+    "active_participant_count": 5,
+    "total_participant_count": 5,
+    "first_time_speaker_count": 5,
+    "silence_duration_minutes": 58,
+    "question_answer_flow": "moderate"
+  },
+  "rationale": "All five participants have introduced themselves with a nickname pattern. While there was a significant time gap before the final message, the group is following the established flow.",
+  "intervention_readiness": {
+    "status": "ready",
+    "reason": "The group has successfully completed initial introductions and is ready for a light icebreaker.",
+    "cautions": [
+      "Keep interactions low-pressure as participants mentioned feeling awkward",
+      "Acknowledge the recent activity after the hour-long silence"
+    ]
+  },
+  "updated_at": "2026-06-22T06:15:00.000Z"
+}

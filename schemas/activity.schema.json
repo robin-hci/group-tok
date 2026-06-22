@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activity",
+  "type": "object",
+  "required": ["id", "title", "source", "risk_level", "instructions"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "source": { "type": "string" },
+    "risk_level": { "type": "string" },
+    "group_stages": { "type": "array", "items": { "type": "string" } },
+    "duration_minutes": { "type": "integer" },
+    "materials": { "type": "array", "items": { "type": "string" } },
+    "original_format": { "type": "string" },
+    "participation_modes": { "type": "array", "items": { "type": "string" } },
+    "goals": { "type": "array", "items": { "type": "string" } },
+    "instructions": { "type": "string" },
+    "online_adaptation_notes": { "type": "string" },
+    "facilitation_notes": { "type": "string" }
+  }
+}

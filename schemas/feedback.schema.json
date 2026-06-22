@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeedbackSnapshot",
+  "type": "object",
+  "required": ["intervention_id", "participant_count", "message_count", "first_time_speaker_count", "participation_rate", "updated_at"],
+  "properties": {
+    "intervention_id": { "type": "string" },
+    "participant_count": { "type": "integer" },
+    "message_count": { "type": "integer" },
+    "first_time_speaker_count": { "type": "integer" },
+    "emoji_count": { "type": "integer" },
+    "participation_rate": { "type": "number" },
+    "completion_status": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

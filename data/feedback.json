@@ -1,0 +1,12 @@
+[
+  {
+    "intervention_id": "intervention_demo_nickname",
+    "participant_count": 4,
+    "message_count": 4,
+    "first_time_speaker_count": 3,
+    "emoji_count": 3,
+    "participation_rate": 0.8,
+    "completion_status": "active_response",
+    "updated_at": "2026-06-22T05:12:00.000Z"
+  }
+]

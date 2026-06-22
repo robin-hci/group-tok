@@ -1,0 +1,26 @@
+[
+  {
+    "id": "animal-adjective-game",
+    "title": "Animal/Adjective Game",
+    "source": "UCSD Sixth College Community Building Activities",
+    "risk_level": "low",
+    "group_stages": [
+      "early",
+      "forming"
+    ],
+    "duration_minutes": 5,
+    "materials": [],
+    "original_format": "offline",
+    "participation_modes": [
+      "text"
+    ],
+    "goals": [
+      "name familiarity",
+      "quick warm-up",
+      "low-pressure participation"
+    ],
+    "instructions": "Everyone chooses an animal or adjective that starts with the same letter as their first name.",
+    "online_adaptation_notes": "Ask everyone to post a nickname made from an adjective or animal plus their name. Keep explanation optional.",
+    "facilitation_notes": "Make it optional to explain the choice so the activity stays low-risk."
+  }
+]

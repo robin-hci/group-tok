@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupContext",
+  "type": "object",
+  "required": [
+    "summary",
+    "state",
+    "group_stage",
+    "participation_level",
+    "energy_level",
+    "familiarity_level",
+    "fatigue_level",
+    "recommended_risk_level",
+    "recent_topics",
+    "signals",
+    "rationale",
+    "intervention_readiness",
+    "updated_at"
+  ],
+  "properties": {
+    "summary": { "type": "string" },
+    "state": { "type": "string" },
+    "group_stage": { "type": "string" },
+    "participation_level": { "type": "string" },
+    "energy_level": { "type": "string" },
+    "familiarity_level": { "type": "string" },
+    "fatigue_level": { "type": "string" },
+    "recommended_risk_level": { "type": "string" },
+    "recent_topics": { "type": "array", "items": { "type": "string" } },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "recent_message_count": { "type": "integer" },
+        "active_participant_count": { "type": "integer" },
+        "total_participant_count": { "type": "integer" },
+        "first_time_speaker_count": { "type": "integer" },
+        "silence_duration_minutes": { "type": ["integer", "null"] },
+        "question_answer_flow": { "type": "string" }
+      }
+    },
+    "rationale": { "type": "string" },
+    "intervention_readiness": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "reason": { "type": "string" },
+        "cautions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

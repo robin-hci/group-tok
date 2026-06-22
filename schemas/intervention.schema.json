@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Intervention",
+  "type": "object",
+  "required": ["id", "activity_id", "activity_title", "risk_level", "card_text", "status", "created_at"],
+  "properties": {
+    "id": { "type": "string" },
+    "activity_id": { "type": "string" },
+    "activity_title": { "type": "string" },
+    "risk_level": { "type": "string" },
+    "adapted_title": { "type": "string" },
+    "adapter_notes": { "type": "string" },
+    "card_text": { "type": "string" },
+    "facilitation_plan": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string" },
+    "created_at": { "type": "string" }
+  }
+}
