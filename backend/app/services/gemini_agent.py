@@ -32,12 +32,14 @@ class GeminiAgent:
         match = re.search(r"\{.*\}", text, re.DOTALL)
 
         if not match:
-            raise GeminiOutputError("Gemini response did not contain a JSON object.")
+            raise GeminiOutputError(
+                "Gemini response did not contain a JSON object.")
 
         try:
             result = json.loads(match.group(0))
         except json.JSONDecodeError as error:
-            raise GeminiOutputError("Gemini response was not valid JSON.") from error
+            raise GeminiOutputError(
+                "Gemini response was not valid JSON.") from error
 
         if not isinstance(result, dict):
             raise GeminiOutputError("Gemini JSON response must be an object.")
@@ -53,7 +55,8 @@ class GeminiAgent:
         try:
             return GroupContext.model_validate(result)
         except Exception as error:
-            raise GeminiOutputError("Gemini Group Context output failed schema validation.") from error
+            raise GeminiOutputError(
+                "Gemini Group Context output failed schema validation.") from error
 
     def select_activities(
         self,
@@ -64,6 +67,7 @@ class GeminiAgent:
         result = self._generate_json(
             self._prompt("activity_retriever.md"),
             {
+                "system_overview": self._prompt("system_overview.md"),
                 "group_context": context.model_dump(mode="json"),
                 "activity_library": [activity.model_dump(mode="json") for activity in activities],
             },
@@ -71,7 +75,8 @@ class GeminiAgent:
         ranked_ids = result.get("ranked_activity_ids")
 
         if not isinstance(ranked_ids, list):
-            raise GeminiOutputError("Gemini activity retrieval output must include ranked_activity_ids.")
+            raise GeminiOutputError(
+                "Gemini activity retrieval output must include ranked_activity_ids.")
 
         activities_by_id = {activity.id: activity for activity in activities}
         selected = [
@@ -81,7 +86,8 @@ class GeminiAgent:
         ]
 
         if not selected:
-            raise GeminiOutputError("Gemini did not select any known activity IDs.")
+            raise GeminiOutputError(
+                "Gemini did not select any known activity IDs.")
 
         return selected[:limit]
 
@@ -95,6 +101,7 @@ class GeminiAgent:
         result = self._generate_json(
             self._prompt("intervention_timing.md"),
             {
+                "system_overview": self._prompt("system_overview.md"),
                 "chat": chat.model_dump(mode="json"),
                 "group_context": context.model_dump(mode="json"),
                 "activity_library": [
@@ -109,7 +116,8 @@ class GeminiAgent:
         )
 
         if "should_start" not in result or "reason" not in result:
-            raise GeminiOutputError("Gemini timing output must include should_start and reason.")
+            raise GeminiOutputError(
+                "Gemini timing output must include should_start and reason.")
 
         return result
 
@@ -121,11 +129,13 @@ class GeminiAgent:
         result = self._generate_json(
             self._prompt("activity_adapter.md"),
             {
+                "system_overview": self._prompt("system_overview.md"),
                 "activity": activity.model_dump(mode="json"),
                 "group_context": context.model_dump(mode="json"),
             },
         )
-        required_keys = ["adapted_title", "adapter_notes", "chat_steps", "participation_mode"]
+        required_keys = ["adapted_title", "adapter_notes",
+                         "chat_steps", "participation_mode"]
         missing_keys = [key for key in required_keys if key not in result]
 
         if missing_keys:
@@ -144,6 +154,7 @@ class GeminiAgent:
         result = self._generate_json(
             self._prompt("intervention_generator.md"),
             {
+                "system_overview": self._prompt("system_overview.md"),
                 "activity": activity.model_dump(mode="json"),
                 "group_context": context.model_dump(mode="json"),
                 "adaptation": adaptation,
@@ -178,6 +189,7 @@ class GeminiAgent:
         result = self._generate_json(
             self._prompt("facilitation_layer.md"),
             {
+                "system_overview": self._prompt("system_overview.md"),
                 "chat": chat.model_dump(mode="json"),
                 "group_context": context.model_dump(mode="json"),
                 "intervention": intervention.model_dump(mode="json"),
@@ -187,6 +199,7 @@ class GeminiAgent:
         action = result.get("action")
 
         if action not in {"none", "reminder", "closing"}:
-            raise GeminiOutputError("Gemini facilitation output has an invalid action.")
+            raise GeminiOutputError(
+                "Gemini facilitation output has an invalid action.")
 
         return result
